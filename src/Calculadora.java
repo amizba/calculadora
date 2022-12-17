@@ -2,6 +2,8 @@
  *
  * @author amizba@gmail.com
  * Amparo Izquierdo Bañez
+ * 
+ * https://empezandojava.blogspot.com/
  */
 
 import javax.swing.*;
@@ -9,6 +11,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigDecimal;
+/*
+ * Aplicación gráfica de una calcualdora que realiza las operaciones básicas: sumar, restar,
+ * multiplicar y dividir
+ * 
+ * Fecha: 17/12/2022
+ */
 public class Calculadora {
     public static void main(String[] args) {
             	MarcoCalculadora mimarco = new MarcoCalculadora();
@@ -38,7 +46,7 @@ class LaminaCalculadora extends JPanel {//Creo lamina
     private BigDecimal result;
     private String lastCommand;
     private boolean start;
-    public LaminaCalculadora() { //Constructor
+    public LaminaCalculadora() { //Constructor. Crea los botones y componentes de la calculadora
         setLayout(new BorderLayout()); 
         result = BigDecimal.ZERO; 
         lastCommand = "=";
@@ -69,7 +77,11 @@ class LaminaCalculadora extends JPanel {//Creo lamina
         addButton("+", command);
         add(panel, BorderLayout.CENTER);
     }
-    private void addButton(String label, ActionListener listener) {//Método que indica como van aparecer los números en el display
+    /*
+     *  Método que crea un boton del teclado numérico y enlaza sus eventos con el listener
+	 * correspondiente
+     */
+    private void addButton(String label, ActionListener listener) {
         JButton button = new JButton(label);
         button.setFont(button.getFont().deriveFont(20f));
         button.addActionListener(listener);
@@ -100,7 +112,10 @@ class LaminaCalculadora extends JPanel {//Creo lamina
             }
         }
     }
-    public void calcular(BigDecimal x) {//Método que realiza los calculos
+    /*
+	 * Calcula el resultado y lo muestra por pantalla
+	 */
+    public void calcular(BigDecimal x) {
         if (lastCommand.equals("+")) result = result.add(x);
         else if (lastCommand.equals("-")) result = result.subtract(x);
         else if (lastCommand.equals("*")) result = result.multiply(x);
